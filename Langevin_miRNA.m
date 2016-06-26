@@ -17,19 +17,18 @@ function LS_miRNA(mi, p, r, K_r, K_p, K_mi,  K_t, Y_r, Y_p, Y_mi, h, n)
 % Time Axis for plotting	
 	t = 0 :h:(n+1)*h
     plot(t,P)
-    title('K_p',num2str(K_p),'K_r',num2str(K_r),'K_mi',num2str(K_mi),'K_t',num2str(K_t),'Y_r',num2str(Y_r),'Y_p',num2str(Y_p),'Y_mi',num2str(Y_mi))
+    
 	xlabel('Time')
 	ylabel('Protien Concerntration')
     figure()
  
 	plot(t,R)
-    title('K_p',num2str(K_p),'K_r',num2str(K_r),'K_mi',num2str(K_mi),'K_t',num2str(K_t),'Y_r',num2str(Y_r),'Y_p',num2str(Y_p),'Y_mi',num2str(Y_mi))
+   
 	xlabel('Time')
 	ylabel('mRNA Concerntration') 
     figure()
 
     plot(t,Mi)
-    title('K_p',num2str(K_p),'K_r',num2str(K_r),'K_mi',num2str(K_mi),'K_t',num2str(K_t),'Y_r',num2str(Y_r),'Y_p',num2str(Y_p),'Y_mi',num2str(Y_mi))
     xlabel('Time')
     ylabel('miRNA Concerntration')
 
