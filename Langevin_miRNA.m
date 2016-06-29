@@ -9,9 +9,9 @@ function LS_miRNA(mi, p, r, K_r, K_p, K_mi,  K_t, Y_r, Y_p, Y_mi, h, n)
         Z = randn() 
 		% Simulating over the step 
 		% Generating Random Noise for various noise terms in Langevin Simulations
-		R(i+1)  =  R(i) + h*(K_r - (K_p*R(i)) - (K_t*(R(i))*(Mi(i))) - (Y_r*(R(i))) + (sqrt(K_p*(R(i)))*(X)) + (sqrt(K_t*(R(i))*(Mi(i)))*Y) + (sqrt(Y_r*(R(i)))* Z) ); 
-		P(i+1)  =  P(i) + h*(K_p*R(i) - Y_p*P(i)	+ sqrt(K_p*R(i))*X + 	sqrt(Y_p*P(i))*Z	);
-		Mi(i+1) =  Mi(i) + h*(K_mi  - K_t*R(i)*Mi(i)	- Y_mi* Mi(i) + sqrt(K_t*R(i)*Mi(i))* Y	+ sqrt(Y_mi*Mi(i))*Z	); 
+		R(i+1)  =  R(i) + h*(K_r  - (K_t*(R(i))*(Mi(i))) - (Y_r*(R(i))))+ sqrt(h)*((sqrt(K_t*(R(i))*(Mi(i)))*Y) + (sqrt(Y_r*(R(i)))* Z) ); 
+		P(i+1)  =  P(i) + h*(K_p*R(i) - Y_p*P(i))	+ sqrt(h)*(sqrt(K_p*R(i))*X + 	sqrt(Y_p*P(i))*Z);
+		Mi(i+1) =  Mi(i) + h*(K_mi  - K_t*R(i)*Mi(i)	- Y_mi* Mi(i)) + sqrt(h)*(sqrt(K_t*R(i)*Mi(i))* Y + sqrt(Y_mi*Mi(i))*Z	); 
 	
     end
 % Time Axis for plotting	
