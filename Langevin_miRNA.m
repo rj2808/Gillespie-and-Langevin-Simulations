@@ -18,6 +18,7 @@ function LS_miRNA(mi, p, r, K_r, K_p, K_mi,  K_t, Y_r, Y_p, Y_mi, h, n)
 	t = 0 :h:(n+1)*h
     plot(t,P)
     
+    
 	xlabel('Time')
 	ylabel('Protien Concerntration')
     figure()
