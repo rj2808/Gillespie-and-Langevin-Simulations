@@ -70,7 +70,7 @@ function Gillespie_Simulations(mi, p, r, K_r, K_p, K_mi,  K_t, Y_r, Y_p, Y_mi, V
             elseif ((a_1+a_2+a_3+a_4)/a_0 <= A && A < (a_1+a_2+a_3+a_4+a_5)/a_0)
               R(i+1) = R(i) - 1;
               P(i+1) = P(i);
-              Mi(i+1) = Mi(i) - 1;
+              Mi(i+1) = Mi(i);
               t_r(i+1) =t_r(i) + Tau;
               t_mi(i+1) = t_mi(i) +Tau;
               t_p(i+1) = t_p(i) + Tau;
