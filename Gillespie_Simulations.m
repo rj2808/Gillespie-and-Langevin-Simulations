@@ -1,4 +1,4 @@
-function Gillespie_miRNA(mi, p, r, K_r, K_p, K_mi,  K_t, Y_r, Y_p, Y_mi, h, n, V)
+function Gillespie_miRNA(mi, p, r, K_r, K_p, K_mi,  K_t, Y_r, Y_p, Y_mi, V, n)
 % Function to be used for Gillespie Simulations of the miRNA gene regulations
 % Make a_0 as the sum of all possible a_k's
     Mi(1) = mi;
@@ -96,4 +96,21 @@ function Gillespie_miRNA(mi, p, r, K_r, K_p, K_mi,  K_t, Y_r, Y_p, Y_mi, h, n, V
               t_mi(i+1) = t_mi(i) + Tau;s
             end
     end
-    
+
+% Plotting Graphs
+plot(t_p, P);
+xlabel('Time');
+ylabel('Protien Number')
+figure()
+
+plot(t_mi, Mi)
+xlabel('Time')
+ylabel('miRNA Number')
+figure()
+
+plot(t_r, R)
+xlabel('Time')
+ylabel('mRNA Number')
+figure()
+
+end
