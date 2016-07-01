@@ -71,7 +71,7 @@ function Gillespie_Simulations(mi, p, r, K_r, K_p, K_mi,  K_t, Y_r, Y_p, Y_mi, V
               R(i+1) = R(i) - 1;
               P(i+1) = P(i);
               Mi(i+1) = Mi(i) - 1;
-              t_r(i+1) = t_r(i) + Tau;
+              t_r(i+1) =t_r(i) + Tau;
               t_mi(i+1) = t_mi(i) +Tau;
               t_p(i+1) = t_p(i) + Tau;
 
@@ -110,6 +110,5 @@ figure()
 plot(t_r, R)
 xlabel('Time')
 ylabel('mRNA Number')
-figure()
 
 end
