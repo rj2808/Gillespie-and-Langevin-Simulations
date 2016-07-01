@@ -1,4 +1,4 @@
-function Gillespie_miRNA(mi, p, r, K_r, K_p, K_mi,  K_t, Y_r, Y_p, Y_mi, V, n)
+function Gillespie_Simulations(mi, p, r, K_r, K_p, K_mi,  K_t, Y_r, Y_p, Y_mi, V, n)
 % Function to be used for Gillespie Simulations of the miRNA gene regulations
 % Make a_0 as the sum of all possible a_k's
     Mi(1) = mi;
@@ -9,7 +9,7 @@ function Gillespie_miRNA(mi, p, r, K_r, K_p, K_mi,  K_t, Y_r, Y_p, Y_mi, V, n)
     t_p(1) = 0;
     for i = 1 : n+1
             % Defining Various a_k values. Since the changes are t
-            a_1 = (K_p*(R(i));
+            a_1 = (K_p*(R(i)));
             a_2 = K_r*V
             a_3 = K_mi*V
             a_4 = (K_t*(R(i)*Mi(i)))/V
@@ -17,9 +17,9 @@ function Gillespie_miRNA(mi, p, r, K_r, K_p, K_mi,  K_t, Y_r, Y_p, Y_mi, V, n)
             a_6 = (Y_mi*Mi(i))
             a_7 = (Y_p*(P(i)))
 
-            a_0 = K_p*(R(i)(t)) + K_r + K_mi + K_t*(R(i)(t)*Mi(i)(t)) + Y_r*R(i)(t) + Y_mi*Mi(i)(t) + Y_p*(P(i)(t));
+            a_0 = K_p*(R(i)) + K_r + K_mi + K_t*(R(i)*Mi(i)) + Y_r*R(i) + Y_mi*Mi(i) + Y_p*(P(i));
             % Choosing a Exponential Random variable to choose after what time reaction should take place
-            Tau = exprand(1/(a_0));
+            Tau = exprnd(1/(a_0));
 
             % Chossing a Random Variable between 0 and 1 in order to choose which reaction
             %should take place
@@ -48,7 +48,7 @@ function Gillespie_miRNA(mi, p, r, K_r, K_p, K_mi,  K_t, Y_r, Y_p, Y_mi, V, n)
               t_p(i+1) = t_p(i) + Tau;
 
             % Formation of miRNA
-            elseif( ((a_1+a_2)/a_0 <= A < (a_1+a_2+a_3)/a_0)
+            elseif( ((a_1+a_2)/a_0 <= A < (a_1+a_2+a_3)/a_0))
               Mi(i+1) = Mi(i) + 1;
               P(i+1) = P(i);
               R(i+1) = R(i);
