@@ -30,70 +30,70 @@ function Gillespie_Simulations(mi, p, r, K_r, K_p, K_mi,  K_t, Y_r, Y_p, Y_mi, V
 
             % The mRNA is Converted into Protien
             if ( 0 <= A && A < a_1/a_0)
-              P(i+1) = P(i) + 1;
-              Mi(i+1) = Mi(i);
-              R(i+1) = R(i);
-              t_p(i+1) = t_p(i) + Tau;
-              t_r(i+1) = t_r(i) + Tau;
-              t_mi(i+1) = t_mi(i) + Tau;
-            
+                    P(i+1) = P(i) + 1;
+                    Mi(i+1) = Mi(i);
+                    R(i+1) = R(i);
+                    t_p(i+1) = t_p(i) + Tau;
+                    t_r(i+1) = t_r(i) + Tau;
+                    t_mi(i+1) = t_mi(i) + Tau;
+
 
             % Formation of mRNA from DNA
-            elseif( a_1/a_0 <= A && A < (a_1+a_2)/a_0)
-              R(i+1) = R(i) + 1;
-              P(i+1) = P(i);
-              Mi(i+1) = Mi(i);
-              t_r(i+1) = t_r(i) + Tau;
-              t_mi(i+1) = t_mi(i) + Tau;
-              t_p(i+1) = t_p(i) + Tau;
+            elseif ( a_1/a_0 <= A && A < (a_1+a_2)/a_0)
+                    R(i+1) = R(i) + 1;
+                    P(i+1) = P(i);
+                    Mi(i+1) = Mi(i);
+                    t_r(i+1) = t_r(i) + Tau;
+                    t_mi(i+1) = t_mi(i) + Tau;
+                    t_p(i+1) = t_p(i) + Tau;
 
             % Formation of miRNA
-            elseif( ((a_1+a_2)/a_0 <= A && A < (a_1+a_2+a_3)/a_0))
-              Mi(i+1) = Mi(i) + 1;
-              P(i+1) = P(i);
-              R(i+1) = R(i);
-              t_mi(i+1) = t_mi(i) + Tau;
-              t_p(i+1) = t_p(i) + Tau;
-              t_r(i+1) = t_r(i) + Tau;
+            elseif ( ((a_1+a_2)/a_0 <= A && A < (a_1+a_2+a_3)/a_0))
+                    Mi(i+1) = Mi(i) + 1;
+                    P(i+1) = P(i);
+                    R(i+1) = R(i);
+                    t_mi(i+1) = t_mi(i) + Tau;
+                    t_p(i+1) = t_p(i) + Tau;
+                    t_r(i+1) = t_r(i) + Tau;
 
             % The Regulation Term
-            elseif((a_1+a_2+a_3)/a_0 <= A && A < (a_1+a_2+a_3+a_4)/a_0)
-              Mi(i+1) = Mi(i) - 1;
-              R(i+1) = R(i) - 1;
-              P(i+1) = P(i);
-              t_mi(i+1) = t_mi(i) +Tau;
-              t_r(i+1) = t_r(i) + Tau;
-              t_p(i+1) = t_p(i) + Tau;
+            elseif ((a_1+a_2+a_3)/a_0 <= A && A < (a_1+a_2+a_3+a_4)/a_0)
+                    Mi(i+1) = Mi(i) - 1;
+                    R(i+1) = R(i) - 1;
+                    P(i+1) = P(i);
+                    t_mi(i+1) = t_mi(i) +Tau;
+                    t_r(i+1) = t_r(i) + Tau;
+                    t_p(i+1) = t_p(i) + Tau;
 
 
             % Decay of mRNA
             elseif ((a_1+a_2+a_3+a_4)/a_0 <= A && A < (a_1+a_2+a_3+a_4+a_5)/a_0)
-              R(i+1) = R(i) - 1;
-              P(i+1) = P(i);
-              Mi(i+1) = Mi(i);
-              t_r(i+1) =t_r(i) + Tau;
-              t_mi(i+1) = t_mi(i) +Tau;
-              t_p(i+1) = t_p(i) + Tau;
+                    R(i+1) = R(i) - 1;
+                    P(i+1) = P(i);
+                    Mi(i+1) = Mi(i);
+                    t_r(i+1) =t_r(i) + Tau;
+                    t_mi(i+1) = t_mi(i) +Tau;
+                    t_p(i+1) = t_p(i) + Tau;
 
 
             % Decay of miRNA
             elseif ((a_1+a_2+a_3+a_4+a_5)/a_0 <= A && A < (a_1+a_2+a_3+a_4+a_5+a_6)/a_0)
-              Mi(i+1) = Mi(i) - 1;
-              R(i+1) = R(i);
-              P(i+1) = P(i);
-              t_mi(i+1) = t_mi(i) + Tau;
-              t_p(i+1) = t_p(i) + Tau;
-              t_r(i+1) = t_r(i) + Tau;
+                      Mi(i+1) = Mi(i) - 1;
+                      R(i+1) = R(i);
+                      P(i+1) = P(i);
+                      t_mi(i+1) = t_mi(i) + Tau;
+                      t_p(i+1) = t_p(i) + Tau;
+                      t_r(i+1) = t_r(i) + Tau;
 
 
             % Decay of Protien
             elseif ((a_1+a_2+a_3+a_4+a_5+a_6)/a_0 <= A && A < 1)
-              P(i+1) = P(i) - 1;
-              Mi(i+1) = Mi(i);
-              R(i+1) = R(i);
-              t_p(i+1) = t_p(i) + Tau;
-              t_r(i+1) = t_r(i) + Tau;
-              t_mi(i+1) = t_mi(i) + Tau;
+                    P(i+1) = P(i) - 1;
+                    Mi(i+1) = Mi(i);
+                    R(i+1) = R(i);
+                    t_p(i+1) = t_p(i) + Tau;
+                    t_r(i+1) = t_r(i) + Tau;
+                    t_mi(i+1) = t_mi(i) + Tau;
             end
     end
 % Plotting Graphs
