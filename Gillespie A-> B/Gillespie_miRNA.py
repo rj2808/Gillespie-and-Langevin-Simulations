@@ -39,6 +39,5 @@ class Gillespie :
 				self.Algorithm_for_Simulation(Rate)
 G = Gillespie()
 G.run(20000,1,10)
-plt.plot()
 plt.show()
 plt.pause(2**31-1)
