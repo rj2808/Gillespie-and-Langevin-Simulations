@@ -1,6 +1,7 @@
 import random
 import math
-import stochpy
+import numpy as np
+import matplotlib as plt
 
 __author__ = 'Rakshit'
 
@@ -15,7 +16,8 @@ class Gillespie()
 		p_sum = 0
 
 		# Applying the Stocastic Algorithm
-		def Algorithm_for (self, Rate)
+		# For the Reaction A + B -> A
+		def Algorithm_for_Simulation (self, Rate)
 			while self.molA >= 0		# Loop Until the Value of A is zero
 					propensity = (self.molA * self.molB) * rate
 
@@ -23,7 +25,6 @@ class Gillespie()
 							return 0
 					self.molA -= 1
 
-					self.time +=  
+					self.time +=  (-1/propensity)*math.log(random.random()) # Calculating Time Increment
 
-
-
+					print(self.time,self.molA/(self.molA +self.molB),self.molB/(self.molA + self.molB)) # Prining out the Arguements
