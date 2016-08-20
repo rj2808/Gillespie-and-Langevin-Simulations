@@ -7,7 +7,6 @@ __author__ = 'Rakshit'
 # Defining a Class of Simulations to make life easier
 class Gillespie :
         time,molR, molP, molMi = [], [], [], []
-        time  += [0]
         def Algorithm_for_Simulation(self, Kr, Kmi, Kp, Kt, Yr, Ymi, Yp, V, n) :
             i = 0
             while i <= n :
@@ -71,18 +70,23 @@ class Gillespie :
                     self.molP  += [self.molP[i] -1]
                     self.molMi += [self.molMi[i]]
                     self.molR  += [self.molR[i]]
-                print(self.molMi[i])
+                #print(self.molMi[i])
                 #print(self.time[i], self.molR[i], self.molMi[i], self.molP[i])
                 i = i +1
-                print(i)
+                #print(i/n * 100)
 
         def run(self, R, P, Mi, Kr, Kmi, Kp, Kt, Yr, Ymi, Yp, V, n):
+            # Deletition of these array is neccesary
+            del self.molMi[:]
+            del self.molR[:]
+            del self.molP[:]
+            del self.time[:]
             self.molR += [R]
             self.molP += [P]
             self.molMi += [Mi]
+            self.time += [0]
             self.Algorithm_for_Simulation(Kr, Kmi, Kp, Kt, Yr, Ymi, Yp, V, n)
             # Using Subplots to display the plots
-            plt.figure(1)
 
             plt.subplot(221)
             plt.plot(self.time,self.molP)
@@ -102,13 +106,18 @@ class Gillespie :
             
 
 G = Gillespie()
-G.run(10000,10000,10000,10,10,1,.00001,.001,.001,.01,10000,10000000)
-plt.savefig('first.png')
-plt.pause(2**31-1)
+fig = plt.figure(1)
+G.run(10000,10000,10000,10,10,1,.0001,.001,.001,1,1000000,100000000)
+plt.savefig('(10000,10000,10000,10,10,1,.0001,.001,.001,1,1000000,10000000).png')
+plt.close()
+print('First Reaction set complete')
 
 
-
-
+fig2 = plt.figure(2)
+G.run(10000,10000,10000,10,10,1,.001,.001,.001,1,1000000,100000000)
+plt.savefig('(10000,10000,10000,10,10,1,.001,.001,.001,1,1000000,10000000).png')
+plt.close()
+print('Both Reaction set complete')
 
 
 
