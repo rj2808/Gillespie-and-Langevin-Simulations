@@ -1,6 +1,12 @@
 function Gillespie_Simulations(mi, p, r, K_r, K_p, K_mi,  K_t, Y_r, Y_p, Y_mi, V, n)
 % Function to be used for Gillespie Simulations of the miRNA gene regulations
 % Make a_0 as the sum of all possible a_k's
+    tic;
+    Mi = zeros(1, n+1);
+    R  = zeros(1, n+1);
+    P  = zeros(1, n+1);
+    t  = zeros(1, n+1);
+
     Mi(1) = mi;
     R(1) = r;
     P(1) = p;
@@ -17,12 +23,12 @@ function Gillespie_Simulations(mi, p, r, K_r, K_p, K_mi,  K_t, Y_r, Y_p, Y_mi, V
 
             a_0 = a_1 + a_2 +a_3 + a_4 +a_5 +a_6 +a_7;
             % Choosing a Exponential Random variable to choose after what time reaction should take place
-            Tau = exprnd(1/(a_0))
+            Tau = exprnd(1/(a_0));
 
             % Chossing a Random Variable between 0 and 1 in order to choose which reaction
             %should take place
 
-            A =  rand
+            A =  rand;
             % Now Applying Gillespie Simulations for the Problem by considering the reactions according to
             % Algorithm.
 
@@ -78,18 +84,18 @@ function Gillespie_Simulations(mi, p, r, K_r, K_p, K_mi,  K_t, Y_r, Y_p, Y_mi, V
             t(i+1) = t(i) + Tau;
     end
 % Plotting Graphs
-plot(t_p, P);
+plot(t, P);
 xlabel('Time');
 ylabel('Protien Number')
 figure()
 
-plot(t_mi, Mi)
+plot(t, Mi)
 xlabel('Time')
 ylabel('miRNA Number')
 figure()
 
-plot(t_r, R)
+plot(t, R)
 xlabel('Time')
 ylabel('mRNA Number')
-
+toc
 end
